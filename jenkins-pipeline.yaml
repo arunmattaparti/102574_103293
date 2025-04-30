@@ -62,6 +62,14 @@ tool:
               installers:
                 - terraformInstaller:
                     id: "1.0.0"
+  sonarRunnerInstallation:
+    installations:
+      - name: "SonarQube Scanner"
+        properties:
+          - installSource:
+              installers:
+                - sonarRunnerInstaller:
+                    id: "4.7.0.2747"
 
 # Credentials configuration
 credentials:
@@ -79,6 +87,21 @@ credentials:
               id: "terraform-backend-key"
               secret: "${TERRAFORM_BACKEND_KEY}"
               description: "Encryption key for Terraform backend"
+          - string:
+              scope: GLOBAL
+              id: "sonar-token"
+              secret: "${SONAR_TOKEN}"
+              description: "SonarQube authentication token"
+          - string:
+              scope: GLOBAL
+              id: "sonar-host-url"
+              secret: "${SONAR_HOST_URL}"
+              description: "SonarQube server URL"
+          - string:
+              scope: GLOBAL
+              id: "snyk-token"
+              secret: "${SNYK_TOKEN}"
+              description: "Snyk API token for security scanning"
 
 # Job definitions
 jobs:
@@ -132,3 +155,8 @@ unclassified:
               git:
                 remote: "https://github.com/example/terraform-pipeline-library.git"
                 credentialsId: "git-credentials"
+  awsCloudWatchLogs:
+    region: "${AWS_REGION}"
+    logGroupName: "/jenkins/pipeline"
+    useInstanceCredentials: false
+    credentialsId: "aws-credentials"

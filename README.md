@@ -11,6 +11,10 @@ This repository contains Terraform code to deploy an Amazon ECS (Elastic Contain
 - **Infrastructure as Code**: Complete infrastructure defined as code
 - **CI/CD Pipeline**: Jenkins pipeline for automated deployment
 - **Configuration as Code**: Jenkins Configuration as Code (JCasC) template
+- **Code Quality**: SonarQube integration for code quality analysis
+- **Security Scanning**: Snyk integration for security vulnerability detection
+- **Approval Gates**: Manual approval required for production deployments
+- **Logging & Monitoring**: CloudWatch integration for pipeline execution monitoring
 
 ## Project Structure
 
@@ -32,7 +36,12 @@ This repository contains Terraform code to deploy an Amazon ECS (Elastic Contain
 │   ├── security/           # IAM roles, security groups
 │   ├── autoscaling/        # Scaling policies
 │   └── secrets/            # AWS Secrets Manager
-└── examples/               # Example configurations
+├── examples/               # Example configurations
+└── tests/                  # Integration tests
+    ├── test_secrets_manager.sh    # AWS Secrets Manager tests
+    ├── test_cloudwatch_logging.sh # CloudWatch logging tests
+    ├── test_sonarqube_snyk.sh     # SonarQube and Snyk tests
+    └── run_tests.sh               # Test runner script
 ```
 
 ## Prerequisites
@@ -41,6 +50,8 @@ This repository contains Terraform code to deploy an Amazon ECS (Elastic Contain
 - AWS CLI configured with appropriate permissions
 - S3 bucket and DynamoDB table for remote state (optional)
 - Jenkins server (for CI/CD pipeline)
+- SonarQube server (for code quality analysis)
+- Snyk account (for security scanning)
 
 ## Usage
 
@@ -76,3 +87,13 @@ For detailed instructions on using Jenkins Configuration as Code, see [JENKINS_C
 ## Modules
 
 Each module has its own README with specific documentation.
+
+## Testing
+
+The repository includes integration tests for the Jenkins pipeline components:
+
+1. AWS Secrets Manager integration
+2. CloudWatch logging integration
+3. SonarQube and Snyk integration
+
+To run the tests, see the instructions in [tests/README.md](tests/README.md).
