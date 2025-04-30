@@ -2,9 +2,9 @@
 # Test script for CloudWatch logging integration
 
 # Set variables
-TEST_LOG_GROUP="/jenkins/pipeline/test-$(date +%s)"
+TEST_LOG_GROUP="/gitlab/pipeline/test-$(date +%s)"
 TEST_LOG_STREAM="test-stream-$(date +%s)"
-TEST_LOG_MESSAGE="Test message from Jenkins pipeline test script at $(date)"
+TEST_LOG_MESSAGE="Test message from GitLab CI/CD pipeline test script at $(date)"
 AWS_REGION=${AWS_REGION:-"us-east-1"}
 
 # Colors for output

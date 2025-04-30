@@ -1,6 +1,6 @@
-# Jenkins Pipeline Integration Tests
+# GitLab CI/CD Integration Tests
 
-This directory contains test scripts to verify the integration of various components in the Jenkins pipeline.
+This directory contains test scripts to verify the integration of various components in the GitLab CI/CD pipeline.
 
 ## Available Tests
 

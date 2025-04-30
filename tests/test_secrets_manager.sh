@@ -30,7 +30,7 @@ fi
 echo "Creating test secret in AWS Secrets Manager..."
 aws secretsmanager create-secret \
     --name "${TEST_SECRET_NAME}" \
-    --description "Test secret for Jenkins pipeline" \
+    --description "Test secret for GitLab CI/CD pipeline" \
     --secret-string "{\"testKey\":\"${TEST_SECRET_VALUE}\"}" \
     --region "${AWS_REGION}" || {
         echo -e "${RED}Failed to create test secret.${NC}"
@@ -56,7 +56,7 @@ SECRET_ARN=$(aws secretsmanager describe-secret \
 
 echo "Secret ARN: ${SECRET_ARN}"
 
-# Create a test script that simulates the Jenkins pipeline's secret retrieval
+# Create a test script that simulates the GitLab CI/CD pipeline's secret retrieval
 echo "Creating test script for secret retrieval..."
 cat > /tmp/test_retrieve_secret.sh << EOF
 #!/bin/bash
